@@ -17,9 +17,8 @@ class Obstacle{
         this.obstacle.classList.add("obstacle");
     }
     startMovingObstacle(){
-        console.log("moving.....");
         setInterval(()=>{
-        this.yPosition += 20 + this.velocity;
+        this.yPosition += 10 + this.velocity;
         this.obstacle.style.top = this.yPosition + "px";
         } ,40)
     }

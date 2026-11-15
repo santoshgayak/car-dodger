@@ -13,6 +13,10 @@ startScreen.classList.add("hide");
 gameScreen.classList.add("show");
 
 console.log(" game started....");
+
+
+
+// create dividers
 let startingPostion = -180;
 setInterval(() => {
     const newDivider = new Divider(startingPostion, 33);
@@ -27,9 +31,11 @@ setInterval(() => {
     track.appendChild(newDivider.divider);
     dividers.push(newDivider);
     newDivider.startMoving();
-}, 500)
+}, 500);
 
 
+
+//create obstacles
 const obstacles = [];
 const position = [12,43,73 ]
 let obstacleCount = 0;
@@ -38,12 +44,11 @@ setInterval(() => {
     xPosition = position[Math.floor(Math.random()* position.length)];
     let newObstacle = {};
     if( obstacleCount % 3 === 0 ){
-         newObstacle = new Obstacle(xPosition, "./blueCar.png");
+         newObstacle = new Obstacle(xPosition, "./assets/images/blueCar.png");
 
     }else{
-         newObstacle = new Obstacle(xPosition, "./pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png");
+         newObstacle = new Obstacle(xPosition, "./assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png");
     }
-    
     track.appendChild(newObstacle.obstacle);
     obstacles.push(newObstacle);
     newObstacle.startMovingObstacle();
@@ -53,16 +58,45 @@ setInterval(() => {
 }, 1000)
 
 
-
-
+//create new player
 const newPlayer = new Player();
 track.appendChild(newPlayer.player);
-newPlayer.startMovingPlayer();
 
+//object for store keypressed
+let keysPressed = {
+    ArrowLeft: false,
+    ArrowRight: false
+}
+
+//event listeners
 document.addEventListener("keydown", (event) => {
-    newPlayer.startMovingPlayer(event.key);
+    if(event.key in keysPressed){
+        event.preventDefault();
+        keysPressed[event.key] = true;
+    }
+});
+document.addEventListener("keyup", (event) => {
+    if(event.key in keysPressed){
+        event.preventDefault();
+        keysPressed[event.key] = false;
+    }
 });
 
+//create audio object
+const backgroundMusic = new Audio("./assets/audio/aenjoytrips-car-changing-gears-sound-188962.mp3");
+
+const newGame = new Game(newPlayer,backgroundMusic);
+
+
+function startGame() {
+    newGame.startGame(keysPressed);
+    newGame.dectectCollisionWithObstacle();
+    newGame.dectectCoinCollection();
+    requestAnimationFrame(startGame);
+
+}
+
+startGame();
 
 
 
