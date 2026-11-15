@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="gameContainer">
-      <div class="startScreen">
+      <div class="startScreen" id="startScreen">
         <h1 class="gameTitle">Car Dodger</h1>
         <h4 id="instruction">Instruction</h4>
         <ul class="instructionContainer">
@@ -23,10 +23,18 @@
         </ul>
         <button id="startButton">Start 🏁</button>
       </div>
-      <div class="gameScreen"></div>
-      <div class="endScreen"></div>
+      <div class="gameScreen" id="gameScreen">
+        <div class="track" id="track">
+          <div class="boundryLine"></div>
+          <div class="boundryLine rightBorderLine"></div>
+        </div>
+      </div>
+      <div class="endScreen" id="endScreen"></div>
     </div>
 
+    <script src="player.js"></script>
+    <script src="obstacle.js"></script>
+    <script src="divider.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
