@@ -14,7 +14,9 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100dvh;
-  background: linear-gradient(to right, rgb(28, 28, 29), rgb(24, 5, 74));
+  background:
+    linear-gradient(to right, rgba(28, 28, 29, 0.8), rgb(24, 5, 74, 0.9)),
+    linear-gradient(to bottom, rgb(231, 132, 57), rgb(158, 158, 248));
 }
 .scoresContainer {
   width: 100%;
@@ -27,6 +29,7 @@ body {
   box-shadow: 0px 10px 15px black;
   border-radius: 0px 0px 50px 50px;
   background-color: rgb(2, 2, 55);
+  display: none;
 }
 .health {
   border-radius: 50px 50px 0px 0px;
@@ -81,6 +84,7 @@ body {
 }
 
 .gameContainer {
+  scale: 0.9;
   width: 100%;
   height: 100dvh;
   background-color: rgb(0, 0, 0);
@@ -99,14 +103,41 @@ body {
 .startScreen {
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+  z-index: 1;
 }
 .gameTitle {
-  font-size: 5rem;
+  font-size: 10rem;
+  line-height: 0.8;
+  text-align: center;
+  font-style: italic;
+  text-transform: uppercase;
+
+  color: transparent;
+  background: linear-gradient(
+    to top,
+    #b45309 0%,
+    #ff8400 40%,
+    #ffc247 75%,
+    #fff1a6 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(5px 5px 6px rgba(240, 42, 24, 0.55));
+  text-shadow: 10px 40px 100px rgba(22, 22, 22, 0.3);
+}
+.gameTitle span {
+  color: transparent;
+  background: linear-gradient(to top, #035bff 0%, #ebf2f3 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(5px 5px 6px rgba(0, 50, 100, 0.6));
+  margin-bottom: -300px;
 }
 #instruction {
   font-size: 2rem;
@@ -128,14 +159,41 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   border-color: white;
-  width: 300px;
+  border-radius: 50px;
   font-size: 1.5rem;
   color: white;
+  margin-top: 30px;
+  padding: 10px;
+  width: 400px;
+  background: linear-gradient(
+    to bottom,
+    rgb(243, 243, 243) 0%,
+    rgb(114, 9, 194) 50%
+  );
+  box-shadow: 0px 20px 30px rgba(22, 22, 22, 0.6);
+  outline: 3px solid white;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 1xpx;
+  text-shadow: 2px 2px 2px rgb(1, 80, 24);
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+#startButton:hover {
+  scale: 1.1;
+  box-shadow: 0px 20px 300px rgba(22, 22, 22, 0.6);
+  background: linear-gradient(
+    to top,
+    rgb(243, 243, 243) 0%,
+    rgb(114, 9, 194) 50%
+  );
 }
 .gameScreen {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;

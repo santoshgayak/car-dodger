@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="gameContainer health">
-      <div class="scoresContainer">
+      <div class="scoresContainer" id="scoresContainer">
         <div class="score">
           <div class="imageContainer">
             <img
@@ -59,8 +59,12 @@
       </div>
 
       <div class="startScreen" id="startScreen">
-        <h1 class="gameTitle">Car Dodger</h1>
-        <h4 id="instruction">Instruction</h4>
+        <h1 class="gameTitle">
+          Car <br />
+          <span>Dodger</span>
+        </h1>
+        <!--
+       
         <ul class="instructionContainer">
           <li>➡️ for right</li>
           <li>⬅️ for left</li>
@@ -71,7 +75,8 @@
           <li>Stay on the road.</li>
           <li>Survive as long as possible!</li>
         </ul>
-        <button id="startButton">Start 🏁</button>
+         -->
+        <button id="startButton">🏁 Start Game</button>
       </div>
       <div class="gameScreen" id="gameScreen">
         <div class="track" id="track">
@@ -116,7 +121,7 @@
           </div>
           <div class="info">
             <h4 class="infoTitle" id="highestScoreTitle">Engine</h4>
-            <h3 class="infoNumber" id="highestScore">100 %</h3>
+            <h3 class="infoNumber" id="engineCondition">100 %</h3>
           </div>
         </div>
       </div>

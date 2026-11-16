@@ -8,6 +8,7 @@ class Player{
     #carDodgedScore = 0;
     speed = 50 /// change later hardcoded
     distanceTravelled = 0 /// hardcoded change later
+    engineCondition = 100;
 
 
     
@@ -89,10 +90,13 @@ class Player{
       return this.#numberOfCarsDodged;
     }
     getDistanceTravelled(){
-      return this.distanceTravelled;
+      return this.distanceTravelled || 0;
     }
     getPlayerSpeed(){
       return this.speed;
+    }
+     getEngineCondition(){
+      return this.engineCondition;
     }
    
 }

@@ -1,7 +1,19 @@
 const startScreen = document.querySelector("#startScreen");
-const gameScreen = document.querySelector("#gameScreen")
+const gameScreen = document.querySelector("#gameScreen");
+const scoresContainer = document.querySelectorAll(".scoresContainer");
+console.log("scoresContainer");
 const startButton = document.querySelector("#startButton");
 const track = document.querySelector("#track");
+
+
+///score board
+const scoreContainer = document.querySelector("#score");
+const coinsScoreContainer = document.querySelector("#coinsScore");
+const distanceScoreContainer = document.querySelector("#distanceScore");
+const highestScoreContainer = document.querySelector("#highestScore");
+
+const engineConditionContainer = document.querySelector("#engineCondition");
+
 const dividers = [];
 let counter = 0;
 
@@ -9,12 +21,33 @@ setInterval(()=>{
     counter++;
 },100)
 
-startScreen.classList.add("hide");
-gameScreen.classList.add("show");
+
+//event listeners
+startButton.addEventListener("click", ()=>{
+    startScreen.classList.add("hide");
+    gameScreen.classList.add("show");
+    scoresContainer.forEach(container =>{
+        container.classList.add("show");
+    })
+
+    
+})
+document.addEventListener("keydown", (event) => {
+    if(event.key in keysPressed){
+        event.preventDefault();
+        keysPressed[event.key] = true;
+    }
+});
+document.addEventListener("keyup", (event) => {
+    if(event.key in keysPressed){
+        event.preventDefault();
+        keysPressed[event.key] = false;
+    }
+});
+
+
 
 console.log(" game started....");
-
-
 
 // create dividers
 let startingPostion = -180;
@@ -68,19 +101,8 @@ let keysPressed = {
     ArrowRight: false
 }
 
-//event listeners
-document.addEventListener("keydown", (event) => {
-    if(event.key in keysPressed){
-        event.preventDefault();
-        keysPressed[event.key] = true;
-    }
-});
-document.addEventListener("keyup", (event) => {
-    if(event.key in keysPressed){
-        event.preventDefault();
-        keysPressed[event.key] = false;
-    }
-});
+
+
 
 //create audio object
 const backgroundMusic = new Audio("./assets/audio/aenjoytrips-car-changing-gears-sound-188962.mp3");
@@ -89,14 +111,28 @@ const newGame = new Game(newPlayer,backgroundMusic);
 
 
 function startGame() {
+     updateScoreBoard();
     newGame.startGame(keysPressed);
     newGame.dectectCollisionWithObstacle();
     newGame.dectectCoinCollection();
     requestAnimationFrame(startGame);
-
 }
 
 startGame();
+
+
+function updateScoreBoard(){
+    const totalScore = newGame.player.getTotalScore();
+    scoreContainer.textContent = totalScore;
+    const totalCoins = newGame.player.getCoinsCollected();
+    coinsScoreContainer.textContent = totalCoins;
+    const totalDistance = newGame.player.getDistanceTravelled();
+    distanceScoreContainer.textContent = totalDistance;
+    const highestScore = newGame.player.getHighestScore();
+    highestScoreContainer.textContent = highestScore;
+    const engineCondition = newGame.player.getEngineCondition();
+    engineConditionContainer.textContent = engineCondition + " %";
+}
 
 
 
