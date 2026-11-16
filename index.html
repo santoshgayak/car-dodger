@@ -7,7 +7,57 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="gameContainer">
+    <div class="gameContainer health">
+      <div class="scoresContainer">
+        <div class="score">
+          <div class="imageContainer">
+            <img
+              src="/assets/images/Glossy Golden Star Trophy.png"
+              alt="Trophy"
+              height="90px"
+              id="trophy"
+            />
+          </div>
+          <div class="info">
+            <h4 class="infoTitle" id="scoreTitle">Score</h4>
+            <h3 class="infoNumber" id="score">12,300</h3>
+          </div>
+        </div>
+        <div class="coins">
+          <div class="imageContainer">
+            <img src="/assets/images/Shiny Gold Star Coin.png" alt="coin" />
+          </div>
+          <div class="info">
+            <h4 class="infoTitle" id="coinTitle">Coins</h4>
+            <h3 class="infoNumber" id="coinsScore">1300</h3>
+          </div>
+        </div>
+        <div class="distance">
+          <div class="imageContainer">
+            <img
+              src="/assets/images/Glossy Red Location Pin.png"
+              alt="location"
+            />
+          </div>
+          <div class="info">
+            <h4 class="infoTitle" id="distanceTitle">Distance</h4>
+            <h3 class="infoNumber" id="distanceScore">120 <span>km</span></h3>
+          </div>
+        </div>
+        <div class="highestScore">
+          <div class="imageContainer">
+            <img
+              src="/assets/images/Glossy Jewel-Encrusted Golden Crown.png"
+              alt="crown"
+            />
+          </div>
+          <div class="info">
+            <h4 class="infoTitle" id="highestScoreTitle">Score</h4>
+            <h3 class="infoNumber" id="highestScore">12,300</h3>
+          </div>
+        </div>
+      </div>
+
       <div class="startScreen" id="startScreen">
         <h1 class="gameTitle">Car Dodger</h1>
         <h4 id="instruction">Instruction</h4>
@@ -30,6 +80,46 @@
         </div>
       </div>
       <div class="endScreen" id="endScreen"></div>
+
+      <div class="scoresContainer">
+        <div class="score">
+          <div class="imageContainer">
+            <img
+              src="/assets/images/Glossy Chrome Semicircular Speedometer Gauge.png"
+              alt="Trophy"
+              height="90px"
+              id="trophy"
+            />
+          </div>
+          <div class="info">
+            <h4 class="infoTitle" id="speedTitle">Speed</h4>
+            <h3 class="infoNumber" id="speed">120 <span>km/h</span></h3>
+          </div>
+        </div>
+        <div class="lives">
+          <div class="info">
+            <h4 class="infoTitle" id="livesTitle">Lives</h4>
+          </div>
+          <div class="imageContainer">
+            <img src="/assets/images/Glossy 3D Red Heart Icon.png" alt="coin" />
+            <img src="/assets/images/Glossy 3D Red Heart Icon.png" alt="coin" />
+            <img src="/assets/images/Glossy 3D Red Heart Icon.png" alt="coin" />
+          </div>
+        </div>
+
+        <div class="carCondition">
+          <div class="imageContainer">
+            <img
+              src="/assets/images/Glossy V8 Engine Cartoon Icon.png"
+              alt="crown"
+            />
+          </div>
+          <div class="info">
+            <h4 class="infoTitle" id="highestScoreTitle">Engine</h4>
+            <h3 class="infoNumber" id="highestScore">100 %</h3>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="./classes//audio.js"></script>
