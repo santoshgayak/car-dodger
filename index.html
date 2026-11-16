@@ -84,7 +84,68 @@
           <div class="boundryLine rightBorderLine"></div>
         </div>
       </div>
-      <div class="endScreen" id="endScreen"></div>
+      <div class="endScreen" id="endScreen">
+        <div class="gameOverTitle">
+          <img src="./assets/images/Glossy Golden Star Trophy.png" alt="" />
+          <h1 class="gameTitle">Game <span>Over</span></h1>
+        </div>
+        <div class="message">
+          <h3>Better Luck Next Time!</h3>
+        </div>
+        <div class="endScoresContainer" id="endScoresContainer">
+          <div class="score">
+            <div class="imageContainer">
+              <img
+                src="/assets/images/Glossy Golden Star Trophy.png"
+                alt="Trophy"
+                height="90px"
+                id="trophy"
+              />
+            </div>
+            <div class="info">
+              <h4 class="infoTitle" id="scoreTitle">Score</h4>
+              <h3 class="infoNumber" id="endScore">12,300</h3>
+            </div>
+          </div>
+          <div class="coins">
+            <div class="imageContainer">
+              <img src="/assets/images/Shiny Gold Star Coin.png" alt="coin" />
+            </div>
+            <div class="info">
+              <h4 class="infoTitle" id="coinTitle">Coins</h4>
+              <h3 class="infoNumber" id="endCoinsScore">1300</h3>
+            </div>
+          </div>
+          <div class="distance">
+            <div class="imageContainer">
+              <img
+                src="/assets/images/Glossy Red Location Pin.png"
+                alt="location"
+              />
+            </div>
+            <div class="info">
+              <h4 class="infoTitle" id="distanceTitle">Distance</h4>
+              <h3 class="infoNumber" id="endDistanceScore">
+                120 <span>km</span>
+              </h3>
+            </div>
+          </div>
+          <div class="highestScore">
+            <div class="imageContainer">
+              <img
+                src="/assets/images/Glossy Jewel-Encrusted Golden Crown.png"
+                alt="crown"
+              />
+            </div>
+            <div class="info">
+              <h4 class="infoTitle" id="highestScoreTitle">Highest</h4>
+              <h3 class="infoNumber" id="endHighestScore">12,300</h3>
+            </div>
+          </div>
+        </div>
+
+        <button id="replayButton">🏁 Replay Game</button>
+      </div>
 
       <div class="scoresContainer">
         <div class="score">
@@ -106,9 +167,24 @@
             <h4 class="infoTitle" id="livesTitle">Lives</h4>
           </div>
           <div class="imageContainer">
-            <img src="/assets/images/Glossy 3D Red Heart Icon.png" alt="coin" />
-            <img src="/assets/images/Glossy 3D Red Heart Icon.png" alt="coin" />
-            <img src="/assets/images/Glossy 3D Red Heart Icon.png" alt="coin" />
+            <img
+              class="heart"
+              src="/assets/images/Glossy 3D Red Heart Icon.png"
+              id="heart1"
+              alt="coin"
+            />
+            <img
+              class="heart"
+              src="/assets/images/Glossy 3D Red Heart Icon.png"
+              id="heart2"
+              alt="coin"
+            />
+            <img
+              class="heart"
+              src="/assets/images/Glossy 3D Red Heart Icon.png"
+              id="heart3"
+              alt="coin"
+            />
           </div>
         </div>
 

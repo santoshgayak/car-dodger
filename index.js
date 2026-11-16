@@ -1,17 +1,23 @@
 const startScreen = document.querySelector("#startScreen");
 const gameScreen = document.querySelector("#gameScreen");
+const endScreen = document.querySelector("#endScreen");
 const scoresContainer = document.querySelectorAll(".scoresContainer");
 console.log("scoresContainer");
 const startButton = document.querySelector("#startButton");
+const replayButton = document.querySelector("#replayButton");
 const track = document.querySelector("#track");
 
-
+//endscreen
+const endScoreContainer =document.querySelector("#endScore");
+const endCoinsScoreContainer = document.querySelector("#endCoinsScore");
+const endDistanceScoreContainer = document.querySelector("#endDistanceScore");
+const endHighestScoreContainer = document.querySelector("#endHighestScore");
 ///score board
 const scoreContainer = document.querySelector("#score");
 const coinsScoreContainer = document.querySelector("#coinsScore");
 const distanceScoreContainer = document.querySelector("#distanceScore");
 const highestScoreContainer = document.querySelector("#highestScore");
-
+const speedContainer = document.querySelector("#speed")
 const engineConditionContainer = document.querySelector("#engineCondition");
 
 const dividers = [];
@@ -21,17 +27,42 @@ setInterval(()=>{
     counter++;
 },100)
 
+//create audio object
+const startAudio = new Audio("./assets/audio/alex-morgan-car-car-music-545487.mp3");
+startAudio.playAudio();
 
 //event listeners
+
+    startScreen.classList.add("show");
+    endScreen.classList.add("hide");
+
+
 startButton.addEventListener("click", ()=>{
+    startAudio.stopPlayingAudio();
+    startScreen.classList.remove("show");
+
     startScreen.classList.add("hide");
     gameScreen.classList.add("show");
     scoresContainer.forEach(container =>{
         container.classList.add("show");
     })
+    startGame();
+});
 
-    
-})
+replayButton.addEventListener("click", () => {
+    startAudio.stopPlayingAudio();
+    startScreen.classList.remove("hide");
+
+    startScreen.classList.add("show");
+    gameScreen.classList.add("hide");
+    endScreen.classList.remove("show");
+    endScreen.classList.add("hide");
+
+
+
+
+});
+
 document.addEventListener("keydown", (event) => {
     if(event.key in keysPressed){
         event.preventDefault();
@@ -50,16 +81,16 @@ document.addEventListener("keyup", (event) => {
 console.log(" game started....");
 
 // create dividers
-let startingPostion = -180;
-setInterval(() => {
+let startingPostion = -100;
+let obstacleType1 = setInterval(() => {
     const newDivider = new Divider(startingPostion, 33);
     track.appendChild(newDivider.divider);
     dividers.push(newDivider);
     newDivider.startMoving();
 }, 500)
 
-let rightDividerPosition = -190;
-setInterval(() => {
+let rightDividerPosition = -100;
+let obstacleType2 = setInterval(() => {
     const newDivider = new Divider(rightDividerPosition, 65);
     track.appendChild(newDivider.divider);
     dividers.push(newDivider);
@@ -83,6 +114,7 @@ setInterval(() => {
          newObstacle = new Obstacle(xPosition, "./assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png");
     }
     track.appendChild(newObstacle.obstacle);
+    newObstacle.hasCollided = false;
     obstacles.push(newObstacle);
     newObstacle.startMovingObstacle();
     counter++;
@@ -111,14 +143,43 @@ const newGame = new Game(newPlayer,backgroundMusic);
 
 
 function startGame() {
-     updateScoreBoard();
+    updateScoreBoard();
     newGame.startGame(keysPressed);
-    newGame.dectectCollisionWithObstacle();
-    newGame.dectectCoinCollection();
+    obstacles.forEach((obstacle, index) => {
+        const isColliding = newGame.dectectCollisionWithObstacle( newPlayer.player, obstacle.obstacle);
+        if (isColliding) {
+            const colliosionAudio = new Audio("./assets/audio/u_mgq59j5ayf-sound-effect-car-crash-394903.mp3");
+            colliosionAudio.playAudio();
+            colliosionAudio.stopLooping();
+            console.log("Collision detected!");
+            obstacle.obstacle.remove();
+            obstacles.splice(index,1);
+            obstacle.hasCollided = true;
+            newPlayer.decreaseEngineCondition();
+            const engineCondition = newGame.player.getEngineCondition();
+            engineConditionContainer.textContent = engineCondition + " %";
+            removeHeart();
+            if(newGame.isGameOver()){
+                endScreen.classList.add("show");
+                gameScreen.classList.remove("show");
+                gameScreen.classList.add("hide");
+                
+                scoresContainer.forEach(container => {
+                    container.classList.remove("show");
+                });          
+                
+                console.log(obstacles)
+                startAudio.stopPlayingAudio();
+                updateEndScreenScoreBoard();   
+                newGame.endGame();
+            };
+
+        }
+         
+    });
     requestAnimationFrame(startGame);
 }
 
-startGame();
 
 
 function updateScoreBoard(){
@@ -132,6 +193,29 @@ function updateScoreBoard(){
     highestScoreContainer.textContent = highestScore;
     const engineCondition = newGame.player.getEngineCondition();
     engineConditionContainer.textContent = engineCondition + " %";
+
+    const speed = newGame.player.getPlayerSpeed()
+    speedContainer.textContent = speed + " km/h";
+}
+function updateEndScreenScoreBoard(){
+    const totalScore = newGame.player.getTotalScore();
+    endScoreContainer.textContent = totalScore;
+    const totalCoins = newGame.player.getCoinsCollected();
+    endCoinsScoreContainer.textContent = totalCoins;
+    const totalDistance = newGame.player.getDistanceTravelled();
+    endDistanceScoreContainer.textContent = totalDistance;
+    const highestScore = newGame.player.getHighestScore();
+    endHighestScoreContainer.textContent = highestScore;
+
+
+}
+
+function removeHeart(){
+    newGame.player.decreaseLives();
+    const hearts = document.querySelectorAll(".heart");
+    if(hearts.length > 0){
+        hearts[hearts.length - 1].remove();
+    }
 }
 
 

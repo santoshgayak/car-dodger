@@ -2,14 +2,14 @@ class Obstacle{
     constructor(xPosition, background){
 
         this.obstacle = document.createElement("div");
-        this.dividerHeight = 200;
-        this.dividerWidth = 100;
+        this.obstacleHeight = 200;
+        this.obstacleWidth = 100;
         this.velocity = 15;
         this.xPosition = xPosition;
         this.yPosition = -400;
 
-        this.obstacle.style.height = this.dividerHeight + "px";
-        this.obstacle.style.width = this.dividerWidth + "px";
+        this.obstacle.style.height = this.obstacleHeight + "px";
+        this.obstacle.style.width = this.obstacleWidth + "px";
         this.obstacle.style.position = "absolute"
         this.obstacle.style.top = this.yPosition + "px";
         this.obstacle.style.left = this.xPosition + "%";

@@ -29,7 +29,6 @@ class Player{
       
     }
     startMovingPlayer(keyPressed){
-      console.log(" I am called")
       const movingSpeed = 0.05 + this.velocity;
       if(keyPressed["ArrowRight"] && (this.xPosition < 70)){
           this.xPosition += movingSpeed;   
@@ -81,8 +80,6 @@ class Player{
     increaseLives() {
       if (this.#lives < 3) this.#lives++;
     }
-
- 
     getTotalScore(){
       return this.#carDodgedScore + this.#coinsCollectionScore;
     }
@@ -98,5 +95,13 @@ class Player{
      getEngineCondition(){
       return this.engineCondition;
     }
+    decreaseEngineCondition(){
+
+      this.engineCondition -= 33;
+      if(this.engineCondition <= 1){
+        this.engineCondition = 0;
+      }
+    }
+
    
 }

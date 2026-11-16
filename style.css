@@ -84,7 +84,7 @@ body {
 }
 
 .gameContainer {
-  scale: 0.9;
+  scale: 1;
   width: 100%;
   height: 100dvh;
   background-color: rgb(0, 0, 0);
@@ -180,6 +180,7 @@ body {
   font-style: italic;
   cursor: pointer;
   transition: all 0.2s ease;
+  animation: pulse 0.7s alternate infinite;
 }
 #startButton:hover {
   scale: 1.1;
@@ -189,6 +190,16 @@ body {
     rgb(243, 243, 243) 0%,
     rgb(114, 9, 194) 50%
   );
+  animation: none;
+}
+@keyframes pulse {
+  0% {
+    scale: 1;
+    box-shadow: 0px 20px 300px rgba(206, 89, 89, 0.6);
+  }
+  100% {
+    scale: 1.1;
+  }
 }
 .gameScreen {
   width: 100%;
@@ -222,13 +233,100 @@ body {
   background-color: white;
 }
 
+#endScreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 1;
+  background-color: rgba(14, 16, 16, 0.8);
+}
+
+.endScoresContainer {
+  width: 80%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  border: 5px solid rgb(103, 164, 243);
+  box-shadow: 0px 10px 15px black;
+  border-radius: 0px 0px 50px 50px;
+  background-color: rgb(2, 2, 55);
+}
+.endScoresContainer img {
+  height: 70px;
+  filter: drop-shadow(0px 2px 6px rgba(233, 139, 7, 0.4));
+}
+
+.endScoresContainer .score,
+.endScoresContainer .coins,
+.endScoresContainer .distance,
+.endScoresContainer .highestScore {
+  border-radius: 0px 0px 0px 0px;
+}
+.gameOverTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.gameOverTitle img {
+  height: 300px;
+}
+.gameOverTitle h1 {
+  text-shadow: 100px 20px 300px black;
+}
+#replayButton {
+  background-color: green;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border-color: white;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 30px;
+  padding: 10px;
+  width: 400px;
+  background: linear-gradient(
+    to bottom,
+    rgb(243, 243, 243) 0%,
+    rgb(119, 148, 3) 50%
+  );
+  box-shadow: 0px 20px 30px rgba(22, 22, 22, 0.6);
+  outline: 3px solid white;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 1xpx;
+  text-shadow: 2px 2px 2px rgb(1, 80, 24);
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: pulse 0.7s alternate infinite;
+}
+#replayButton:hover {
+  scale: 1.1;
+  box-shadow: 0px 20px 300px rgba(22, 22, 22, 0.6);
+  background: linear-gradient(
+    to top,
+    rgb(243, 243, 243) 0%,
+    rgb(194, 182, 9) 50%
+  );
+  animation: none;
+}
+
 /* Dynamically adding classes*/
 
 .hide {
   display: none !important;
 }
 .show {
-  display: flex;
+  display: flex !important;
 }
 
 .divider {
