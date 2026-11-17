@@ -29,7 +29,7 @@ class Player{
       
     }
     startMovingPlayer(keyPressed){
-      const movingSpeed = 0.05 + this.velocity;
+      const movingSpeed = 0.1 + this.velocity;
       if(keyPressed["ArrowRight"] && (this.xPosition < 70)){
           this.xPosition += movingSpeed;   
       }
@@ -43,7 +43,7 @@ class Player{
       this.#numberOfCarsDodged++;
     }
     increaseDodgedCarScore(){
-      this.#carDodgedScore += 10;
+      this.#carDodgedScore += 100;
     }
 
     getCoinsCollected(){
@@ -55,7 +55,7 @@ class Player{
     }
 
     increaseCoinsCollectionScore(){
-      this.#coinsCollectionScore += 10;
+      this.#coinsCollectionScore += 100;
     }
 
     updateHighestScore(){
@@ -96,11 +96,22 @@ class Player{
       return this.engineCondition;
     }
     decreaseEngineCondition(){
-
       this.engineCondition -= 33;
       if(this.engineCondition <= 1){
         this.engineCondition = 0;
       }
+    }
+
+    resetPlayer() {
+      console.log(" reset player callerd")
+      this.#coinsCollected = 0;
+      this.#coinsCollectionScore = 0;
+      this.#lives = 3;
+      this.#numberOfCarsDodged = 0;
+      this.#carDodgedScore = 0;
+      this.speed = 50;
+      this.distanceTravelled = 0;
+      this.engineCondition = 100;
     }
 
    

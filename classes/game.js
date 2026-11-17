@@ -8,16 +8,15 @@ class Game{
     }
     startGame(keyPressed){
         this.player.startMovingPlayer(keyPressed);
-        this.audio.playAudio();
 
     }
     pauseGame(){
         console.log(" Game pausing now ..... ");
-
-
     }
     endGame(){
         this.audio.stopPlayingAudio();
+        this.player.resetPlayer();
+        console.log(this.player);
         console.log(" Game ending now ..... ");
 
     }
@@ -40,10 +39,7 @@ class Game{
 
     }
     isGameOver(){
-        if(this.player.getEngineCondition() === 0) {
-            return true;
-        }
-        if(this.player.getLives() === 0){
+        if((this.player.getEngineCondition() === 0) || (this.player.getLives() === 0)) {
             return true;
         }
     }

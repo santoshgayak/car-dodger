@@ -83,10 +83,17 @@
           <div class="boundryLine"></div>
           <div class="boundryLine rightBorderLine"></div>
         </div>
+        <div class="hitSpaceMessage" id="hitSpaceMessage">
+          PRESS SPACE <br />TO START
+        </div>
       </div>
       <div class="endScreen" id="endScreen">
         <div class="gameOverTitle">
-          <img src="./assets/images/Glossy Golden Star Trophy.png" alt="" />
+          <img
+            src="./assets/images/Glossy Golden Star Trophy.png"
+            alt="trophy"
+            id="endTrophy"
+          />
           <h1 class="gameTitle">Game <span>Over</span></h1>
         </div>
         <div class="message">
@@ -203,6 +210,7 @@
       </div>
     </div>
 
+    <script src="./classes/coin.js"></script>
     <script src="./classes//audio.js"></script>
     <script src="./classes/player.js"></script>
     <script src="./classes/obstacle.js"></script>
