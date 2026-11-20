@@ -1,6 +1,8 @@
 class Obstacle{
-    constructor(xPosition, background){
 
+    obstaceInterval = null;
+    hasCollided = false;
+    constructor(xPosition, background){
         this.obstacle = document.createElement("div");
         this.obstacleHeight = 180;
         this.obstacleWidth = 90;
@@ -17,10 +19,18 @@ class Obstacle{
         this.obstacle.classList.add("obstacle");
     }
     startMovingObstacle(){
-        setInterval(()=>{
+        this.obstaceInterval = setInterval(()=>{
         this.yPosition += 1 + this.velocity;
         this.obstacle.style.top = this.yPosition + "px";
+           if (this.yPosition > 800) {
+            this.stopMovingObstacle();
+            this.obstacle.remove();
+        }
+
         } ,40)
+    }
+    stopMovingObstacle(){
+        clearInterval(this.obstaceInterval);
     }
 
 }

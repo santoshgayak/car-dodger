@@ -1,4 +1,5 @@
 class Coin {
+    hascollided = false;
     constructor(xPosition, background) {
         this.coin = document.createElement("div");
         this.coinHeight = 50;
@@ -17,7 +18,6 @@ class Coin {
         this.coin.style.backgroundRepeat = "no-repeat";
         this.coin.style.backgroundPosition = "center";
         this.coin.classList.add("coin");
-        console.log(" In Coins construnctor");
     }
 
     startMovingCoin() {

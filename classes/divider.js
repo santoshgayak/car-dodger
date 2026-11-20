@@ -1,4 +1,6 @@
 class Divider{
+
+
     constructor(yPosition, xPostion){
         this.divider = document.createElement("div");
         this.dividerHeight = 100;
@@ -14,6 +16,7 @@ class Divider{
         this.divider.style.left = this.xPostion + "%";
         this.divider.classList.add("divider");
     }
+
     startMoving(){
         setInterval(()=>{
         this.yPosition += 90;

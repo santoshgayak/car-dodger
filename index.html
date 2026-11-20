@@ -16,6 +16,7 @@
               alt="Trophy"
               height="90px"
               id="trophy"
+              loading="lazy"
             />
           </div>
           <div class="info">
@@ -25,7 +26,12 @@
         </div>
         <div class="coins">
           <div class="imageContainer">
-            <img src="/assets/images/Shiny Gold Star Coin.png" alt="coin" />
+            <img
+              src="/assets/images/Shiny Gold Star Coin.png"
+              alt="coin"
+              id="coinImg"
+              loading="lazy"
+            />
           </div>
           <div class="info">
             <h4 class="infoTitle" id="coinTitle">Coins</h4>
@@ -37,6 +43,7 @@
             <img
               src="/assets/images/Glossy Red Location Pin.png"
               alt="location"
+              loading="lazy"
             />
           </div>
           <div class="info">
@@ -49,10 +56,11 @@
             <img
               src="/assets/images/Glossy Jewel-Encrusted Golden Crown.png"
               alt="crown"
+              loading="lazy"
             />
           </div>
           <div class="info">
-            <h4 class="infoTitle" id="highestScoreTitle">Score</h4>
+            <h4 class="infoTitle" id="highestScoreTitle">Highest</h4>
             <h3 class="infoNumber" id="highestScore">12,300</h3>
           </div>
         </div>
@@ -76,7 +84,7 @@
           <li>Survive as long as possible!</li>
         </ul>
          -->
-        <button id="startButton">🏁 Start Game</button>
+        <button type="button" id="startButton">🏁 Start Game</button>
       </div>
       <div class="gameScreen" id="gameScreen">
         <div class="track" id="track">
@@ -93,6 +101,7 @@
             src="./assets/images/Glossy Golden Star Trophy.png"
             alt="trophy"
             id="endTrophy"
+            loading="lazy"
           />
           <h1 class="gameTitle">Game <span>Over</span></h1>
         </div>
@@ -107,6 +116,7 @@
                 alt="Trophy"
                 height="90px"
                 id="trophy"
+                loading="lazy"
               />
             </div>
             <div class="info">
@@ -128,6 +138,7 @@
               <img
                 src="/assets/images/Glossy Red Location Pin.png"
                 alt="location"
+                loading="lazy"
               />
             </div>
             <div class="info">
@@ -142,6 +153,7 @@
               <img
                 src="/assets/images/Glossy Jewel-Encrusted Golden Crown.png"
                 alt="crown"
+                loading="lazy"
               />
             </div>
             <div class="info">
@@ -151,7 +163,7 @@
           </div>
         </div>
 
-        <button id="replayButton">🏁 Replay Game</button>
+        <button type="button" id="replayButton">🏁 Replay Game</button>
       </div>
 
       <div class="scoresContainer">
@@ -162,6 +174,7 @@
               alt="Trophy"
               height="90px"
               id="trophy"
+              loading="lazy"
             />
           </div>
           <div class="info">
@@ -179,18 +192,21 @@
               src="/assets/images/Glossy 3D Red Heart Icon.png"
               id="heart1"
               alt="coin"
+              loading="lazy"
             />
             <img
               class="heart"
               src="/assets/images/Glossy 3D Red Heart Icon.png"
               id="heart2"
               alt="coin"
+              loading="lazy"
             />
             <img
               class="heart"
               src="/assets/images/Glossy 3D Red Heart Icon.png"
               id="heart3"
               alt="coin"
+              loading="lazy"
             />
           </div>
         </div>
@@ -200,6 +216,7 @@
             <img
               src="/assets/images/Glossy V8 Engine Cartoon Icon.png"
               alt="crown"
+              loading="lazy"
             />
           </div>
           <div class="info">
@@ -211,10 +228,11 @@
     </div>
 
     <script src="./classes/coin.js"></script>
-    <script src="./classes//audio.js"></script>
+    <script src="./classes/audio.js"></script>
     <script src="./classes/player.js"></script>
     <script src="./classes/obstacle.js"></script>
     <script src="./classes/divider.js"></script>
+    <script src="./classes/screen.js"></script>
     <script src="./classes/game.js"></script>
     <script src="index.js"></script>
   </body>
