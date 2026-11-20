@@ -44,14 +44,14 @@ class Player{
     }
   
     handleKeyUp(e){
-      if(e.key in keysPressed){
+      if(e.key in this.keysPressed){
         e.preventDefault();
         this.keysPressed[e.key] = false;
       }
     }
 
     handleKeyDown(e) {
-      if(e.key in keysPressed){
+      if(e.key in this.keysPressed){
           e.preventDefault();
           if (e.repeat) return;
           this.keysPressed[e.key] = true;
