@@ -175,6 +175,7 @@ body {
   background-color: #e9e1e1;
   box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.5);
   position: relative;
+  width: 80%;
 }
 .instructionContainer::after {
   position: absolute;
@@ -203,7 +204,6 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 30%;
   height: 200px;
 }
 .instruction {
