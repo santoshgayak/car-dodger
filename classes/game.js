@@ -1,6 +1,7 @@
 class Game{
     
     level = 1;
+    distance = 0;
 
     //divider postion
     static DIVIDER = {
@@ -81,6 +82,9 @@ class Game{
                 this.track.appendChild(newDivider.divider);
                 this.gameObjects.dividers.push(newDivider);
                 newDivider.startMoving();
+                console.log("Increasing distance");
+                this.distance += 0.01;
+                this.player.distanceTravelled = this.distance.toFixed(2);            
             })
         },200);
     }

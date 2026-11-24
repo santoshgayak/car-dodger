@@ -122,7 +122,7 @@ class GameUi{
         this.liveStats.coinsScoreContainer.textContent = totalCoins;
 
         const totalDistance = player.getDistanceTravelled();
-        this.liveStats.distanceScoreContainer.textContent = totalDistance;
+        this.liveStats.distanceScoreContainer.textContent = totalDistance + " km";
 
         const highestScore = player.getHighestScore();
         this.liveStats.highestScoreContainer.textContent = highestScore;

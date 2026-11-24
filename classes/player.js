@@ -43,7 +43,8 @@ class Player{
       if(this.keysPressed["ArrowLeft"] && this.xPosition > 10){
             this.xPosition -= movingSpeed;
       }   
-      this.player.style.left = this.xPosition + "%";         
+      this.player.style.left = this.xPosition + "%";    
+     
     }
   
     handleKeyUp(e){

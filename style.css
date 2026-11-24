@@ -350,6 +350,9 @@ body {
 .endScoresContainer .highestScore {
   border-radius: 0px 0px 0px 0px;
 }
+.endScoresContainer .highestScore {
+  border: none;
+}
 .gameOverTitle {
   display: flex;
   align-items: center;
