@@ -30,7 +30,7 @@ class Game{
         redCar: "./assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png",
     }
     coinsImage = {
-        goldCoin: "../assets/images/Shiny Gold Star Coin.png"
+        goldCoin: "./assets/images/Shiny Gold Star Coin.png"
     }
     keysPressed = {
         space: false
