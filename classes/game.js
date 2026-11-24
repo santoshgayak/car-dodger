@@ -24,10 +24,10 @@ class Game{
     }
 
     obstacleImages = {
-        schoolBus: "../assets/images/school_bus.png",
-        teslaTruck: "../assets/images/tesla_truck.png",
-        blueCar: "../assets/images/blueCar.png",
-        redCar: "../assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png",
+        schoolBus: "./assets/images/school_bus.png",
+        teslaTruck: "./assets/images/tesla_truck.png",
+        blueCar: "./assets/images/blueCar.png",
+        redCar: "./assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png",
     }
     coinsImage = {
         goldCoin: "../assets/images/Shiny Gold Star Coin.png"
