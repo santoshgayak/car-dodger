@@ -1,7 +1,5 @@
 class Game{
     
-    level = 1;
-    distance = 0;
 
     //divider postion
     static DIVIDER = {
@@ -49,6 +47,10 @@ class Game{
         coinCollection: new GameAudio("coinCollection"),
         engine: new GameAudio("engine")
     };
+    
+    level = 1;
+    distance = 0;
+
 
     constructor(player, gameUi, audios){
         this.player = player;
