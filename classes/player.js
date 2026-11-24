@@ -1,11 +1,14 @@
 class Player{
 
-    //player game properties
-    #coinsCollected = 0;
-    #coinsCollectionScore = 0;
     #lives = 3;
-    #numberOfCarsDodged = 0;
-    #carDodgedScore = 0;
+    #liveCost = 10000;
+    #coinsValue
+
+    //player game properties
+    coinsCollected = 0;
+    coinsCollectionScore = 0;
+    numberOfCarsDodged = 0;
+    carDodgedScore = 0;
     speed = 50 /// change later hardcoded
     distanceTravelled = 0 /// hardcoded change later
     engineCondition = 100;
@@ -76,20 +79,20 @@ class Player{
     }
 
     increaseNumberOfCarsDodged(){
-      this.#numberOfCarsDodged++;
+      this.numberOfCarsDodged++;
     }
     increaseDodgedCarScore(){
-      this.#carDodgedScore += 100;
+      this.carDodgedScore += 100;
     }
     getCoinsCollected(){
-      return this.#coinsCollected;
+      return this.coinsCollected;
     }
     increaseCoinsCollected(){
-      this.#coinsCollected++;
+      this.coinsCollected++;
     }
 
-    increaseCoinsCollectionScore(){
-      this.#coinsCollectionScore += 500;
+    increaseCoinsCollectionScore(value){
+      this.coinsCollectionScore += value;
     }
     updateHighestScore(){
        const currentScore = this.getTotalScore();
@@ -114,10 +117,10 @@ class Player{
     }
     
     getTotalScore(){
-      return this.#carDodgedScore + this.#coinsCollectionScore;
+      return this.carDodgedScore + this.coinsCollectionScore;
     }
     getCarsDodged(){
-      return this.#numberOfCarsDodged;
+      return this.numberOfCarsDodged;
     }
     getDistanceTravelled(){
       return this.distanceTravelled || 0;
@@ -141,18 +144,19 @@ class Player{
       }
     }
     resetPlayer() {
-      this.#coinsCollected = 0;
-      this.#coinsCollectionScore = 0;
+      this.coinsCollected = 0;
+      this.coinsCollectionScore = 0;
       this.#lives = 3;
-      this.#numberOfCarsDodged = 0;
-      this.#carDodgedScore = 0;
+      this.numberOfCarsDodged = 0;
+      this.carDodgedScore = 0;
       this.speed = 50;
       this.distanceTravelled = 0;
       this.engineCondition = 100;
       this.yPosition = -15;
     }
     pay(){
-      this.#coinsCollectionScore -= 5000;
+      
+      this.coinsCollectionScore -= this.#liveCost;
     }
 
 

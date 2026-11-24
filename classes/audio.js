@@ -12,7 +12,6 @@ class GameAudio {
  
     constructor(type){
         this.audio = document.createElement("audio");
-        console.log("Hello",GameAudio.gameAudio[type]);
         this.audio.src = GameAudio.gameAudio[type];
         this.audio.type = "audio/mpeg";
         this.audio.loop = true;
@@ -22,7 +21,6 @@ class GameAudio {
     }
 
     stopPlayingAudio(){
-        console.log(" stopping Audio again.......")
         this.audio.pause();
         this.audio.currentTime = 0;
     }

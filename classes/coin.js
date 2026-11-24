@@ -1,10 +1,25 @@
 class Coin {
+
     hascollided = false;
+    value = 500;
+    coinSpeed = {
+        "1": 50,
+        "2": 48,
+        "3": 46,
+        "4": 44,
+        "5": 40,
+        "6": 38,
+        "7": 34,
+        "8": 30,
+        "9": 25,
+        "10":10
+    }
+
     constructor(xPosition, background) {
         this.coin = document.createElement("div");
         this.coinHeight = 50;
         this.coinWidth = 50;
-        this.velocity = 15;
+        this.velocity = 30;
         this.xPosition = xPosition;
         this.yPosition = -400;
 
@@ -20,10 +35,10 @@ class Coin {
         this.coin.classList.add("coin");
     }
 
-    startMovingCoin() {
+    startMovingCoin(level) {
         setInterval(() => {
             this.yPosition += 5 + this.velocity;
             this.coin.style.top = this.yPosition + "px";
-        }, 40);
+        }, this.coinSpeed[level]);
     }
 }

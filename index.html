@@ -64,6 +64,10 @@
             <h3 class="infoNumber" id="highestScore">12,300</h3>
           </div>
         </div>
+        <div class="volumeControl">
+          <button type="button" id="volumeButton">🔊</button>
+          <button type="button" id="muted">🔇</button>
+        </div>
       </div>
 
       <div class="startScreen" id="startScreen">
@@ -71,6 +75,9 @@
           Car <br />
           <span>Dodger</span>
         </h1>
+
+        <button type="button" id="startButton">🏁 Start Game</button>
+
         <!--
        
         <ul class="instructionContainer">
@@ -84,15 +91,15 @@
           <li>Survive as long as possible!</li>
         </ul>
          -->
-        <button type="button" id="startButton">🏁 Start Game</button>
       </div>
       <div class="gameScreen" id="gameScreen">
         <div class="track" id="track">
           <div class="boundryLine"></div>
           <div class="boundryLine rightBorderLine"></div>
         </div>
+
         <div class="hitSpaceMessage" id="hitSpaceMessage">
-          PRESS SPACE <br />TO START
+          <h3>PRESS SPACE <br />TO START</h3>
         </div>
       </div>
       <div class="endScreen" id="endScreen">
@@ -166,7 +173,7 @@
         <button type="button" id="replayButton">🏁 Replay Game</button>
       </div>
 
-      <div class="scoresContainer">
+      <div class="scoresContainer bottom">
         <div class="score">
           <div class="imageContainer">
             <img

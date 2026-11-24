@@ -2,7 +2,7 @@ class GameUi{
     static warningColors = {
         3: "none",
         2: "rgba(227, 79, 10, 0.4)",
-        1: "rgba(231, 37, 23, 0.7)",
+        1: "rgba(243, 79, 67, 0.7)",
         0: "none"
     };
     constructor(){

@@ -1,21 +1,21 @@
 class Game{
+    
+    level = 1;
 
     //divider postion
     static DIVIDER = {
         yPostion:  -100,
         xPostion: [33,65]
     }
-    
     static objectPositionX = [12, 43, 73];
-
     //intervals of all game world objects created
     intervals = {
         divider: null,
         obstacle: null,
         coin: null,
-        player: null
+        player: null,
+        level: null
     }
-
     //game world objects array
     gameObjects = {
         dividers: [],
@@ -24,6 +24,8 @@ class Game{
     }
 
     obstacleImages = {
+        schoolBus: "../assets/images/school_bus.png",
+        teslaTruck: "../assets/images/tesla_truck.png",
         blueCar: "../assets/images/blueCar.png",
         redCar: "../assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png",
     }
@@ -33,6 +35,8 @@ class Game{
     keysPressed = {
         space: false
     }
+    gameStates = ["start","playing","end"];
+    currentGameState = this.gameStates[0];
 
     static audios = {
         start: new GameAudio("start"),
@@ -49,6 +53,25 @@ class Game{
         this.gameUi = gameUi;
         this.track = gameUi.track;
     }
+    startTimer(){
+        this.stopInterval(this.intervals, "levelTimer");
+        console.log(" Timer started ....... ");
+        let counter = 0
+        this.intervals.level = setInterval(()=>{
+            counter++;
+            if(counter === 15){
+                counter = 0;
+                console.log("level 2 reached")
+                newGame.levelUp();
+            }
+        },1000);
+    }
+    levelUp(){
+        if(this.level < 100){
+            console.log("LEVELING UP");
+            this.level++;
+        }
+    }
     //create divider line
     createDivider(){
         this.stopInterval(this.intervals, "divider");
@@ -59,7 +82,7 @@ class Game{
                 this.gameObjects.dividers.push(newDivider);
                 newDivider.startMoving();
             })
-        },500);
+        },200);
     }
   
     //create obstacle cars 
@@ -68,17 +91,23 @@ class Game{
         let obstacleCount = 0;
         this.intervals.obstacle = setInterval(() => {
             const xPosition = Game.objectPositionX[Math.floor(Math.random()* Game.objectPositionX.length)];
-            const obstacleImage = obstacleCount % 3 === 0 ? this.obstacleImages.blueCar : this.obstacleImages.redCar;
+            let obstacleImage = obstacleCount % 3 === 0 ? this.obstacleImages.blueCar : this.obstacleImages.redCar;
+            if(obstacleCount % 17 === 0) {
+                 obstacleImage = this.obstacleImages.teslaTruck;
+            }else if(obstacleCount % 11 === 0){
+                obstacleImage = this.obstacleImages.schoolBus;
+            }
             const newObstacle = new Obstacle(xPosition, obstacleImage);
             this.track.appendChild(newObstacle.obstacle);
             this.gameObjects.obstacles.push(newObstacle);
-            newObstacle.startMovingObstacle();
+            newObstacle.startMovingObstacle(this.level);
             obstacleCount++;
-        }, 1500);
+        }, 1000);
     }
 
     //create coins 
     createCoins(){
+
         this.stopInterval(this.intervals,"coin");
         const coinsPosition = [12,43,73 ]
         let coinsCount = 0;
@@ -87,7 +116,7 @@ class Game{
             const newCoin = new Coin(xPosition, this.coinsImage.goldCoin);
             this.track.appendChild(newCoin.coin);
             this.gameObjects.coins.push(newCoin);
-            newCoin.startMovingCoin();
+            newCoin.startMovingCoin(this.level);
             coinsCount++;
         }, 300);
     }
@@ -115,7 +144,8 @@ class Game{
     }
     //render nitial screen 
     showStartScreen(){
-       Game.audios.end.stopPlayingAudio();
+        this.currentGameState = this.gameStates[0];
+        Game.audios.end.stopPlayingAudio();
         Game.audios.start.playAudio();
         gameUi.renderStartScreen();
     }
@@ -124,12 +154,16 @@ class Game{
         Game.audios.start.stopPlayingAudio();
         Game.audios.engine.playAudio();
         gameUi.renderGameScreen();
+        this.currentGameState = this.gameStates[1];
+        console.log("Current game state :",this.currentGameState);
         //create game world 
     }
 
 
      //end screen 
     showEndScreen(){
+        this.currentGameState = this.gameStates[2];
+        console.log("End game state :",this.currentGameState);
         Game.audios.background.stopPlayingAudio();
         Game.audios.end.playAudio();
         gameUi.renderEndScreen();
@@ -141,12 +175,12 @@ class Game{
           this.keysPressed.space = true;
              console.log(this.keysPressed.space);
         if(this.keysPressed.space){
+            this.startTimer();
             this.createDivider();
             this.createCarObstacles();
             this.createCoins();
             Game.audios.background.playAudio();
             Game.audios.engine.stopLooping();
-
         }
           this.player.positionPlayer();
       }
@@ -161,6 +195,10 @@ class Game{
     }
 
     startGame(){
+        if(this.currentGameState === this.gameStates[2]) {
+            console.log("Returning now.......");
+            return;
+        }
         this.stopInterval(this.intervals, "player");
         this.intervals.player = setInterval(() =>{
             this.player.startMovingPlayer();
@@ -168,6 +206,7 @@ class Game{
         this.gameUi.updateScoreBoard(this.player);
         this.checkObstaclesCollision();
         this.checkCoinsCollision();
+
         requestAnimationFrame(()=> this.startGame());
     }
 
@@ -176,15 +215,15 @@ class Game{
          this.gameObjects.coins.forEach((coin, index) => {
             const grabbedCoin = this.dectectCollisionWithObstacle( this.player.player, coin.coin);
             if (grabbedCoin) {
+                Game.audios.coinCollection.stopPlayingAudio();
                 Game.audios.coinCollection.playAudio();
                 Game.audios.coinCollection.stopLooping();
 
                 coin.coin.remove();
                 this.gameObjects.coins.splice(index,1);
-                coin.hasCollided = true;
 
                 this.player.increaseCoinsCollected();
-                this.player.increaseCoinsCollectionScore();
+                this.player.increaseCoinsCollectionScore(coin.value);
                 this.player.updateHighestScore();
                 this.gameUi.animateCoin();
             }
@@ -240,10 +279,13 @@ class Game{
     }
 
     isGameOver() {
-        return (
-            this.player.getEngineCondition() === 0 ||
-            this.player.getLives() === 0
-        );
+        if(this.player.getEngineCondition() === 0 ||
+            this.player.getLives() === 0){
+                this.currentGameState = this.gameStates[2];
+                this.level = 1;
+                return true;
+            }
+        return false;
     }
 
     buyLives(e) {
@@ -253,7 +295,7 @@ class Game{
             const currentLives = this.player.getLives();
 
             if (currentLives >= 3) return;
-            if (currentScore < 5000) return;
+            if (currentScore < 10000) return;
 
             this.player.increaseLives();
             this.player.increaseEngineCondition();
@@ -265,6 +307,12 @@ class Game{
 
         }
         
+    }
+    volumeOn(){
+        this.audio.playAudio();
+    }
+    volumeOff(){
+        this.audio.stopPlayingAudio();
     }
     
 }
