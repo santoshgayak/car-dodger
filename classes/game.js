@@ -62,7 +62,6 @@ class Game{
             counter++;
             if(counter === 15){
                 counter = 0;
-                console.log("level 2 reached")
                 newGame.levelUp();
             }
         },1000);

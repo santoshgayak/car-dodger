@@ -1,13 +1,13 @@
 class GameAudio {
 
     static gameAudio = {
-        start: "../assets/audio/alex-morgan-car-car-music-545487.mp3",
-        background: "../assets/audio/aenjoytrips-car-changing-gears-sound-188962.mp3",
-        end:"../assets/audio/alex-morgan-car-car-music-545487.mp3",
-        collision: "../assets/audio/u-mgq59j5ayf-sound-effect-car-crash-394903_hozLuvL7.mp3",
-        heartPop: "../assets/audio/universfield-bubble-pop-06-351337.mp3",
-        coinCollection: "../assets/audio/mixkit-fairy-arcade-sparkle-866_4jncl9xk.wav",
-        engine: "../assets/audio/dragon-studio-car-engine-372477.mp3"
+        start: "./assets/audio/alex-morgan-car-car-music-545487.mp3",
+        background: "./assets/audio/aenjoytrips-car-changing-gears-sound-188962.mp3",
+        end:"./assets/audio/alex-morgan-car-car-music-545487.mp3",
+        collision: "./assets/audio/u-mgq59j5ayf-sound-effect-car-crash-394903_hozLuvL7.mp3",
+        heartPop: "./assets/audio/universfield-bubble-pop-06-351337.mp3",
+        coinCollection: "./assets/audio/mixkit-fairy-arcade-sparkle-866_4jncl9xk.wav",
+        engine: "./assets/audio/dragon-studio-car-engine-372477.mp3"
     };
  
     constructor(type){
