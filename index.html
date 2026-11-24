@@ -77,20 +77,24 @@
         </h1>
 
         <button type="button" id="startButton">🏁 Start Game</button>
-
-        <!--
-       
-        <ul class="instructionContainer">
-          <li>➡️ for right</li>
-          <li>⬅️ for left</li>
-          <li>⬆️ for straight</li>
-          <li>S for boost</li>
-          <li>Avoid other cars and obstacles.</li>
-          <li>Collect coins to increase your score.</li>
-          <li>Stay on the road.</li>
-          <li>Survive as long as possible!</li>
-        </ul>
-         -->
+        <div class="instructionContainer">
+          <div class="arrowkeys">
+            <p id="keys">⬅️ ➡️</p>
+            <p class="instruction">Move Left and Right</p>
+          </div>
+          <div class="collectCoin">
+            <img src="./assets/images/Shiny Gold Star Coin.png" alt="coin" />
+            <p class="instruction">Collect Coins to Increase Score</p>
+          </div>
+          <div class="avoidCollision">
+            <img
+              src="./assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png"
+              alt="car"
+              id="redCar"
+            />
+            <p class="instruction">Avoid Collisions with Other Cars.</p>
+          </div>
+        </div>
       </div>
       <div class="gameScreen" id="gameScreen">
         <div class="track" id="track">

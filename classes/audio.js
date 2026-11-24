@@ -17,7 +17,7 @@ class GameAudio {
         this.audio.loop = true;
     }
     playAudio(){
-        this.audio.play(); 
+        //this.audio.play(); 
     }
 
     stopPlayingAudio(){

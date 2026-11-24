@@ -153,6 +153,7 @@ body {
   left: 0;
   background-color: rgba(68, 63, 63, 0.5);
 }
+
 .startScreen {
   width: 100%;
   height: 100%;
@@ -162,6 +163,45 @@ body {
   flex-direction: column;
   gap: 2rem;
   z-index: 1;
+}
+.instructionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 50px;
+  padding: 10px;
+  border: 10px solid rgb(194, 182, 9);
+  background-color: #e9e1e1;
+  box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.5);
+  max-width: 50%;
+}
+.instructionContainer img {
+  height: 100px;
+}
+#redCar {
+  transform: rotate(90deg);
+}
+#keys {
+  font-size: 4.8rem;
+}
+
+.arrowkeys,
+.collectCoin,
+.avoidCollision {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  height: 200px;
+}
+.instruction {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(7, 3, 110);
+  text-shadow: 0px 2px 2px black;
+  letter-spacing: 1px;
 }
 .gameTitle {
   font-size: 10rem;
@@ -192,20 +232,7 @@ body {
   filter: drop-shadow(10px 10px 2px rgba(0, 50, 100, 1));
   margin-bottom: -300px;
 }
-#instruction {
-  font-size: 2rem;
-  text-align: left;
-  width: 30%;
-}
-.instructionContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-}
-.instructionContainer > li {
-  font-size: 1.5rem;
-}
+
 #startButton {
   background-color: green;
   outline: none;
@@ -221,19 +248,19 @@ body {
   background: linear-gradient(
     to bottom,
     rgb(243, 243, 243) 0%,
-    rgb(114, 9, 194) 50%
+    rgb(194, 9, 74) 50%
   );
   box-shadow: 0px 20px 30px rgba(22, 22, 22, 0.6);
-  outline: 3px solid white;
-  color: white;
+  outline: 10px solid white;
   font-size: 3rem;
   font-weight: bold;
-  letter-spacing: 1xpx;
-  text-shadow: 2px 2px 2px rgb(1, 80, 24);
-  font-style: italic;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.2s ease;
   animation: pulse 0.7s alternate infinite;
+  color: rgb(250, 250, 248);
+  text-shadow: 0px 2px 2px black;
+  letter-spacing: 1px;
 }
 #startButton:hover {
   scale: 1.1;
@@ -241,7 +268,7 @@ body {
   background: linear-gradient(
     to top,
     rgb(243, 243, 243) 0%,
-    rgb(114, 9, 194) 50%
+    rgb(4, 204, 127) 50%
   );
   animation: none;
 }
@@ -252,7 +279,6 @@ body {
 @keyframes pulse {
   0% {
     scale: 1;
-    box-shadow: 0px 20px 300px rgba(206, 89, 89, 0.6);
   }
   100% {
     scale: 1.1;
