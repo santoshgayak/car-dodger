@@ -174,7 +174,6 @@ body {
   border: 10px solid rgb(194, 182, 9);
   background-color: #e9e1e1;
   box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.5);
-  max-width: 90%;
   position: relative;
 }
 .instructionContainer::after {
