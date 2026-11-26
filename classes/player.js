@@ -156,10 +156,8 @@ class Player{
       this.yPosition = -15;
     }
     pay(){
-      
       this.coinsCollectionScore -= this.#liveCost;
     }
-
 
 
    
