@@ -19,7 +19,7 @@ class Coin {
         this.coin = document.createElement("div");
         this.coinHeight = 50;
         this.coinWidth = 50;
-        this.velocity = 30;
+        this.velocity = 25;
         this.xPosition = xPosition;
         this.yPosition = -400;
 

@@ -3,7 +3,8 @@
   margin: 0;
   box-sizing: border-box;
   color: white;
-  font-family: Roboto, Oxygen, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 2px !important;
 }
 html {
   font-size: 16px;
@@ -70,15 +71,7 @@ body {
 #coinImg.animate {
   animation: recieveCoin 0.3s linear;
 }
-@keyframes recieveCoin {
-  0% {
-    scale: 1;
-  }
-  100% {
-    scale: 1.2;
-    filter: drop-shadow(0px 2px 30px gold);
-  }
-}
+
 .heart {
   opacity: 1;
   transform: scale(1);
@@ -189,11 +182,12 @@ body {
   border-radius: 40px;
 }
 .instructionContainer img {
+  margin-bottom: 5px;
   height: 70px;
   filter: drop-shadow(0px 0px 5px rgba(19, 19, 19, 0.8));
 }
 #redCar {
-  transform: rotate(90deg);
+  transform: rotate(0deg);
 }
 #keys {
   font-size: 3.4rem;
@@ -211,7 +205,7 @@ body {
   font-weight: bold;
   text-align: center;
   color: rgb(7, 3, 110);
-  text-shadow: 0px 2px 2px black;
+  text-shadow: 0px 1px 2px black;
   letter-spacing: 1px;
 }
 .gameTitle {
@@ -248,14 +242,13 @@ body {
   background-color: green;
   outline: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-color: white;
   border-radius: 50px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
-  margin-top: 30px;
-  padding: 10px;
-  width: 400px;
+  margin: 30px 0;
+  max-width: 400px;
   background: linear-gradient(
     to bottom,
     rgb(243, 243, 243) 0%,
@@ -263,7 +256,6 @@ body {
   );
   box-shadow: 0px 20px 30px rgba(22, 22, 22, 0.6);
   outline: 10px solid white;
-  font-size: 3rem;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
@@ -326,7 +318,6 @@ body {
   width: 100%;
   text-shadow: 0px 2px 5px rgb(242, 27, 8);
 }
-
 #track {
   width: 700px;
   height: 100%;
@@ -362,7 +353,6 @@ body {
   z-index: 1;
   background-color: rgba(14, 16, 16, 0.8);
 }
-
 .endScoresContainer {
   width: 80%;
   height: 120px;
@@ -376,11 +366,14 @@ body {
   background-color: rgb(2, 2, 55);
 }
 .endScoresContainer img {
-  height: 70px;
+  height: 60px;
   filter: drop-shadow(0px 2px 6px rgba(233, 139, 7, 0.4));
   animation: makeMoves 2s alternate infinite;
 }
-
+.endScoresContainer h3,
+.endScoresContainer h4 {
+  font-size: 1.5rem !important;
+}
 .endScoresContainer .score,
 .endScoresContainer .coins,
 .endScoresContainer .distance,
@@ -397,48 +390,48 @@ body {
   flex-direction: column;
 }
 #endTrophy {
-  height: 300px;
-  width: 300px;
+  height: 150px;
+  width: 150px;
   position: relative;
   animation: makeMoves 1s alternate infinite;
   filter: drop-shadow(0px 10px 30px rgb(244, 178, 92));
 }
-
 .gameOverTitle h1 {
   text-shadow: 100px 20px 300px black;
+  font-size: 6rem;
 }
 .message h3 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: rgb(255, 255, 255);
   text-shadow: 0px 0px 10px rgb(152, 150, 150);
 }
+
 #replayButton {
   background-color: green;
   outline: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-color: white;
   border-radius: 50px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
-  margin-top: 30px;
-  padding: 10px;
-  width: 400px;
+  margin: 30px 0;
+  max-width: 400px;
   background: linear-gradient(
     to bottom,
     rgb(243, 243, 243) 0%,
-    rgb(148, 3, 138) 50%
+    rgb(194, 9, 74) 50%
   );
   box-shadow: 0px 20px 30px rgba(22, 22, 22, 0.6);
-  outline: 3px solid white;
-  color: white;
-  font-size: 3rem;
+  outline: 10px solid white;
   font-weight: bold;
-  letter-spacing: 1xpx;
-  text-shadow: 2px 2px 2px rgb(1, 80, 24);
-  font-style: italic;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.2s ease;
+  animation: pulse 0.7s alternate infinite;
+  color: rgb(250, 250, 248);
+  text-shadow: 0px 2px 2px black;
+  letter-spacing: 1px;
 }
 #replayButton:hover {
   scale: 1.1;
@@ -446,8 +439,9 @@ body {
   background: linear-gradient(
     to top,
     rgb(243, 243, 243) 0%,
-    rgb(194, 182, 9) 50%
+    rgb(4, 204, 127) 50%
   );
+  animation: none;
 }
 
 /* Dynamically adding classes*/
@@ -464,7 +458,6 @@ body {
   position: absolute;
   filter: drop-shadow(0px 2px 10px black);
 }
-
 .divider {
   background-color: white;
   transition: all 0.2s linear;
@@ -475,7 +468,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
 .player {
   transition: all 0.2s linear;
   background-image: url("./assets/images/Top-Down_Blue_Sports_Car_Sprite-removebg-preview.png");
@@ -493,23 +485,6 @@ body {
 .player.tiltRight {
   animation: rightTilt 0.5s alternate ease;
 }
-@keyframes leftTilt {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-20deg);
-  }
-}
-@keyframes rightTilt {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(20deg);
-  }
-}
-
 .heart.invisible {
   opacity: 0;
   transform: scale(0);
@@ -538,7 +513,6 @@ animations
     scale: 1.1;
   }
 }
-
 @keyframes makeMoves {
   0% {
     scale: 1;
@@ -548,7 +522,6 @@ animations
     transform: rotate(3deg);
   }
 }
-
 @keyframes moveTrophy {
   0% {
     scale: 1;
@@ -558,5 +531,30 @@ animations
     scale: 1.4;
     filter: drop-shadow(0px 20px 40px black);
     filter: drop-shadow(0px 10px 30px rgb(234, 231, 231));
+  }
+}
+@keyframes leftTilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes rightTilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+@keyframes recieveCoin {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.2;
+    filter: drop-shadow(0px 2px 30px gold);
   }
 }
