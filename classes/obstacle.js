@@ -6,15 +6,15 @@ class Obstacle{
 
      obstacleSpeed ={
         "1": 60,
-        "2": 55,
-        "3": 50,
-        "4": 45,
-        "5": 40,
-        "6": 35,
-        "7": 30,
-        "8": 25,
-        "9": 20,
-        "10":10
+        "2": 59,
+        "3": 58,
+        "4": 57,
+        "5": 56,
+        "6": 55,
+        "7": 54,
+        "8": 53,
+        "9": 52,
+        "10":51
     }
     constructor(xPosition, background){
         this.obstacle = document.createElement("div");

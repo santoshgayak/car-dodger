@@ -62,14 +62,14 @@ class Game{
         let counter = 0
         this.intervals.level = setInterval(()=>{
             counter++;
-            if(counter === 15){
+            if(counter === 120){
                 counter = 0;
                 newGame.levelUp();
             }
         },1000);
     }
     levelUp(){
-        if(this.level < 100){
+        if(this.level < 10){
             this.level++;
             this.player.speed += 2;
         }
@@ -83,7 +83,6 @@ class Game{
                 this.track.appendChild(newDivider.divider);
                 this.gameObjects.dividers.push(newDivider);
                 newDivider.startMoving(this.level);
-                console.log("Increasing distance");
                 this.distance += 0.01;
                 this.player.distanceTravelled = this.distance.toFixed(2);            
             })
