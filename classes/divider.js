@@ -18,7 +18,8 @@ class Divider{
         this.divider.classList.add("divider");
     }
 
-    startMoving(){
+    startMoving(level){
+        this.dividerSpeed -= level;
         setInterval(()=>{
         this.yPosition = this.yPosition + this.velocity;
         this.divider.style.top = this.yPosition + "px";

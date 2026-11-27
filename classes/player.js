@@ -9,7 +9,7 @@ class Player{
     coinsCollectionScore = 0;
     numberOfCarsDodged = 0;
     carDodgedScore = 0;
-    speed = 50 /// change later hardcoded
+    speed = 0 /// change later hardcoded
     distanceTravelled = 0 /// hardcoded change later
     engineCondition = 100;
     velocity = 0.5;
@@ -77,6 +77,13 @@ class Player{
     positionPlayer(){
         this.yPosition = 100;
         this.player.style.bottom = this.yPosition + "px";
+        const speedId = setInterval(()=>{
+          this.speed += 1;
+          if(this.speed >= 60){
+            clearInterval(speedId);
+            return;
+          }
+        },70)
     }
 
     increaseNumberOfCarsDodged(){
@@ -118,7 +125,7 @@ class Player{
     }
     
     getTotalScore(){
-      return this.carDodgedScore + this.coinsCollectionScore;
+      return this.coinsCollectionScore || 0;
     }
     getCarsDodged(){
       return this.numberOfCarsDodged;
@@ -150,10 +157,14 @@ class Player{
       this.#lives = 3;
       this.numberOfCarsDodged = 0;
       this.carDodgedScore = 0;
-      this.speed = 50;
+      this.speed = 0;
       this.distanceTravelled = 0;
       this.engineCondition = 100;
-      this.yPosition = -15;
+      this.yPosition = -15;      
+      this.xPosition = 40;
+      this.player.style.bottom = this.yPosition + "px";
+      this.player.style.left = this.xPosition + "%";
+
     }
     pay(){
       this.coinsCollectionScore -= this.#liveCost;

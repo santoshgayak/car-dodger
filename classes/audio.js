@@ -1,5 +1,7 @@
 class GameAudio {
 
+    isMuted = false;
+
     static gameAudio = {
         start: "./assets/audio/alex-morgan-car-car-music-545487.mp3",
         background: "./assets/audio/aenjoytrips-car-changing-gears-sound-188962.mp3",
@@ -17,7 +19,8 @@ class GameAudio {
         this.audio.loop = true;
     }
     playAudio(){
-        this.audio.play(); 
+        if(this.isMuted === true ) return;
+        //this.audio.play(); 
     }
 
     stopPlayingAudio(){

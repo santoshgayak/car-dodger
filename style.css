@@ -21,11 +21,10 @@ body {
 }
 .scoresContainer {
   width: 100%;
-  height: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 50px;
+  padding: 10px 50px;
   border: 5px solid rgb(9, 155, 246);
 
   box-shadow: 0px 0px 15px rgb(3, 168, 250);
@@ -56,6 +55,7 @@ body {
   width: 100%;
   outline: none;
 }
+
 .volumeControl {
   width: 40%;
   border-right: 0px solid rgb(0, 213, 255);
@@ -64,8 +64,30 @@ body {
   justify-content: center;
   margin-right: 20px;
 }
+#volume {
+  display: none;
+}
+#muted {
+  display: flex;
+}
+#volume,
+#muted {
+  font-size: 3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-shadow: 2px 2px 5px white;
+}
+#volume {
+  display: none;
+}
+#volume:hover,
+#muted:hover {
+  scale: 1.1;
+  animation: expand 0.2s ease;
+}
 .scoresContainer img {
-  height: 70px;
+  height: 50px;
   filter: drop-shadow(0px 2px 6px rgba(233, 139, 7, 0.4));
 }
 #coinImg.animate {
@@ -85,14 +107,14 @@ body {
   justify-content: center;
 }
 .infoTitle {
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
   font-style: italic;
   color: rgb(0, 213, 255);
   text-shadow: 0px 0px 2px white;
 }
 .infoNumber {
-  font-size: 3rem;
+  font-size: 2rem;
   font-style: italic;
   font-weight: bolder !important;
   text-shadow: 0px 0px 2px white;
@@ -102,21 +124,30 @@ body {
   color: gold !important;
   text-shadow: 0px 0px 2px gold;
 }
-#volumeButton,
-#muted {
-  font-size: 3rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  text-shadow: 2px 2px 5px white;
+
+.imageContainer {
+  position: relative;
 }
-#volumeButton {
-  display: none;
+.speedLine {
+  width: 5px;
+  height: 30px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  transform-origin: bottom center;
+  background-color: #0ff503;
 }
-#volumeButton:hover,
-#muted:hover {
-  scale: 1.1;
-  animation: expand 0.2s ease;
+.speedLine::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  content: "";
+  background-color: #0ff503;
 }
 
 .gameContainer {

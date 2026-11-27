@@ -28,7 +28,11 @@ class GameUi{
             highestScoreContainer: get("#highestScore"),
             speedContainer: get("#speed"),
             engineConditionContainer: get("#engineCondition"),
+            speedlineContainer:get("#speedLine")
         }
+        this.volumeButton = get("#volume");
+        this.muteButton = get("#muted")
+
 
         //coin icon in board
         this.coinImg = get("#coinImg");
@@ -113,6 +117,10 @@ class GameUi{
         this.liveStats.engineConditionContainer.textContent = engineCondition + " %";
     }
 
+    increaseSpeedometer(){
+
+    }
+
     // Update live game scoreboard
     updateScoreBoard(player) {
         const totalScore = player.getTotalScore();
@@ -132,6 +140,10 @@ class GameUi{
 
         const speed = player.getPlayerSpeed();
         this.liveStats.speedContainer.textContent = speed + " km/h";
+        
+        const speedometer = player.getPlayerSpeed();
+        this.liveStats.speedlineContainer.style.transform = `translateX(-50%) rotate(${-90 + speedometer}deg)`;
+
     }
 
     // Update end game scoreboard
@@ -143,7 +155,7 @@ class GameUi{
         this.endStats.coinsScoreContainer.textContent = totalCoins;
 
         const totalDistance = player.getDistanceTravelled();
-        this.endStats.distanceScoreContainer.textContent = totalDistance;
+        this.endStats.distanceScoreContainer.textContent = totalDistance + " km";
 
         const highestScore = player.getHighestScore();
         this.endStats.highestScoreContainer.textContent = highestScore;
@@ -158,6 +170,26 @@ class GameUi{
         this.hitSpaceMessage.classList.remove("hide");
     }
 
+     showVolumeButton() {
+        console.log(" Show volume buton called")
+        this.volumeButton.classList.add("show");
+        this.muteButton.classList.remove("show");
+        this.muteButton.classList.add("hide");
+
+        
+
+        
+
+    }
+      showMuteButton() {
+        console.log(" Show mute button called")
+
+        this.volumeButton.classList.add("hide");
+
+        this.volumeButton.classList.remove("show");
+
+        this.muteButton.classList.add("show");
+    }
         
 }
 

@@ -59,7 +59,6 @@ class Game{
     }
     startTimer(){
         this.stopInterval(this.intervals, "levelTimer");
-        console.log(" Timer started ....... ");
         let counter = 0
         this.intervals.level = setInterval(()=>{
             counter++;
@@ -71,8 +70,8 @@ class Game{
     }
     levelUp(){
         if(this.level < 100){
-            console.log("LEVELING UP");
             this.level++;
+            this.player.speed += 2;
         }
     }
     //create divider line
@@ -83,7 +82,7 @@ class Game{
                 const newDivider = new Divider(Game.DIVIDER.yPostion, x);
                 this.track.appendChild(newDivider.divider);
                 this.gameObjects.dividers.push(newDivider);
-                newDivider.startMoving();
+                newDivider.startMoving(this.level);
                 console.log("Increasing distance");
                 this.distance += 0.01;
                 this.player.distanceTravelled = this.distance.toFixed(2);            
@@ -180,7 +179,7 @@ class Game{
           if (e.repeat) return;
           this.keysPressed.space = true;
              console.log(this.keysPressed.space);
-        if(this.keysPressed.space){
+        if(this.keysPressed.space && this.currentGameState == this.gameStates[1]){
             this.startTimer();
             this.createDivider();
             this.createCarObstacles();
@@ -264,7 +263,9 @@ class Game{
         console.log(" Game pausing now ..... ");
     }
     endGame(){
+        this.distance = 0;
         this.player.resetPlayer();
+        this.gameUi.updateScoreBoard(this.player);
     }
    dectectCollisionWithObstacle(player, obstacle) {
         const playerRect = player.getBoundingClientRect();
@@ -315,10 +316,17 @@ class Game{
         
     }
     volumeOn(){
-        this.audio.playAudio();
+        this.gameUi.showMuteButton();
+        Game.audios.background.isMuted =  false;
+        Game.audios.background.playAudio();
     }
     volumeOff(){
-        this.audio.stopPlayingAudio();
+        this.gameUi.showVolumeButton();
+        Game.audios.background.isMuted =  true;
+        Game.audios.background.stopPlayingAudio();
+        
     }
+
+       
     
 }
