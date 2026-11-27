@@ -20,7 +20,7 @@ class GameAudio {
     }
     playAudio(){
         if(this.isMuted === true ) return;
-        //this.audio.play(); 
+        this.audio.play(); 
     }
 
     stopPlayingAudio(){
