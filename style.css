@@ -402,9 +402,12 @@ body {
   filter: drop-shadow(0px 2px 6px rgba(233, 139, 7, 0.4));
   animation: makeMoves 2s alternate infinite;
 }
-.endScoresContainer h3,
+.endScoresContainer h3 {
+  font-size: 2.5rem !important;
+  margin-top: 5px;
+}
 .endScoresContainer h4 {
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
 }
 .endScoresContainer .score,
 .endScoresContainer .coins,
@@ -495,7 +498,6 @@ body {
   transition: all 0.2s linear;
 }
 .obstacle {
-  transition: all 0.2s linear;
   background-image: url("./assets/images/pngtree-red-car-top-view-icon-png-image_6587097-removebg-preview.png");
   background-size: cover;
   background-position: center;

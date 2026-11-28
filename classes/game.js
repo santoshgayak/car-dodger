@@ -62,7 +62,7 @@ class Game{
         let counter = 0
         this.intervals.level = setInterval(()=>{
             counter++;
-            if(counter === 120){
+            if(counter === 30){
                 counter = 0;
                 newGame.levelUp();
             }

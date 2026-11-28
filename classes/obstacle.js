@@ -20,7 +20,7 @@ class Obstacle{
         this.obstacle = document.createElement("div");
         this.obstacleHeight = 180;
         this.obstacleWidth = 90;
-        this.velocity = 30;
+        this.velocity = 50;
         this.xPosition = xPosition;
         this.yPosition = -400;
 
@@ -36,7 +36,7 @@ class Obstacle{
         this.obstaceInterval = setInterval(()=>{
         this.yPosition += 1 + this.velocity;
         this.obstacle.style.top = this.yPosition + "px";
-           if (this.yPosition > 1400) {
+           if (this.yPosition > 1800) {
             this.stopMovingObstacle();
             this.obstacle.remove();
         }
